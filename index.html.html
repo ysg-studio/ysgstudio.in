@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YSG Studio — Yahya Gopalani | Photography &amp; Visual Production, Mumbai</title>
+<meta name="description" content="YSG Studio is a photography and visual production house founded by Yahya Gopalani, based in Mumbai. Portraits, campaign visuals, and artist documentation for Munawar Faruqui, Evorea, and Alienkind.">
+<meta name="author" content="Yahya Gopalani">
+<meta property="og:title" content="YSG Studio — Yahya Gopalani">
+<meta property="og:description" content="Photography and visual production by Yahya Gopalani. Mumbai-based, pan-India ready.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ysgstudio.in">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Yahya Gopalani",
+  "jobTitle": "Photographer & Visual Producer",
+  "url": "https://ysgstudio.in",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "YSG Studio"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Mumbai",
+    "addressCountry": "IN"
+  },
+  "sameAs": ["https://instagram.com/yahyaaa.g"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Playfair+Display:ital@1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111110;
+    --ink-2:#171715;
+    --gold:#C99A4B;
+    --gold-soft:#8a713e;
+    --bone:#F4EFE6;
+    --bone-dim:#D9D5CC;
+    --slate:#3A3A38;
+    --muted:#8A8A86;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Inter', Arial, sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  /* ---------- film grain overlay (ambient texture) ---------- */
+  .grain{
+    position:fixed; inset:0; z-index:40; pointer-events:none;
+    opacity:0.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- shutter intro ---------- */
+  .shutter{
+    position:fixed; inset:0; z-index:100; pointer-events:none;
+    display:flex;
+  }
+  .shutter-leaf{
+    flex:1; background:var(--ink); position:relative;
+    transition:transform 1.1s cubic-bezier(.76,0,.24,1);
+  }
+  .shutter-leaf::after{
+    content:""; position:absolute; top:0; bottom:0; width:1px; background:var(--gold); opacity:0.4;
+  }
+  .shutter-leaf.l{transform:translateX(0);}
+  .shutter-leaf.l::after{right:0;}
+  .shutter-leaf.r{transform:translateX(0);}
+  .shutter-leaf.r::after{left:0;}
+  .shutter.is-open .shutter-leaf.l{transform:translateX(-100%);}
+  .shutter.is-open .shutter-leaf.r{transform:translateX(100%);}
+  .shutter-center{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-family:'Montserrat', sans-serif; font-weight:700; letter-spacing:6px; font-size:13px; color:var(--gold);
+    opacity:1; transition:opacity .4s ease;
+  }
+  .shutter.is-open .shutter-center{opacity:0;}
+  @media (prefers-reduced-motion: reduce){
+    .shutter{display:none;}
+  }
+  .no-js .shutter{display:none;}
+
+  /* ---------- cursor spotlight (hero only) ---------- */
+  .spotlight{
+    position:absolute; inset:0; pointer-events:none; z-index:1;
+    background:radial-gradient(600px circle at var(--sx,50%) var(--sy,30%), rgba(201,154,75,0.08), transparent 60%);
+    opacity:0; transition:opacity .6s ease;
+  }
+  .spotlight.is-active{opacity:1;}
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- corner-bracket signature motif ---------- */
+  .bracketed{position:relative;}
+  .bracketed::before, .bracketed::after,
+  .bracketed .bl, .bracketed .br{
+    content:""; position:absolute; width:16px; height:16px;
+    border-color:var(--gold); opacity:0; transition:opacity .5s ease, transform .5s ease;
+  }
+  .bracketed::before{ top:-10px; left:-10px; border-top:1.5px solid; border-left:1.5px solid; transform:translate(6px,6px);}
+  .bracketed::after{ top:-10px; right:-10px; border-top:1.5px solid; border-right:1.5px solid; transform:translate(-6px,6px);}
+  .bracketed .bl{ bottom:-10px; left:-10px; border-bottom:1.5px solid; border-left:1.5px solid; transform:translate(6px,-6px);}
+  .bracketed .br{ bottom:-10px; right:-10px; border-bottom:1.5px solid; border-right:1.5px solid; transform:translate(-6px,-6px);}
+  .bracketed.is-visible::before, .bracketed.is-visible::after,
+  .bracketed.is-visible .bl, .bracketed.is-visible .br{ opacity:1; transform:translate(0,0);}
+  .no-js .bracketed::before, .no-js .bracketed::after,
+  .no-js .bracketed .bl, .no-js .bracketed .br{ opacity:1; transform:translate(0,0);}
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(17,17,16,0.85); backdrop-filter:blur(6px);
+    border-bottom:0.5px solid var(--slate);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; max-width:1180px; margin:0 auto;
+  }
+  .nav-mark{ display:flex; align-items:center; gap:10px; font-family:'Montserrat',sans-serif; font-weight:700; letter-spacing:2px; font-size:14px;}
+  .nav-mark .dot{width:6px; height:6px; border-radius:50%; background:var(--gold);}
+  .nav-links{ display:flex; gap:36px; font-size:13px; letter-spacing:0.5px; color:var(--bone-dim);}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{
+    border:0.5px solid var(--gold-soft); color:var(--gold); padding:9px 18px;
+    font-size:12px; letter-spacing:1px; text-transform:uppercase; transition:all .25s ease;
+  }
+  .nav-cta:hover{ background:var(--gold); color:var(--ink);}
+  .nav-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    position:relative; padding-top:80px;
+  }
+  .hero-frame{
+    position:absolute; inset:110px 32px auto 32px; height:calc(100vh - 220px);
+    border:0.5px solid var(--slate); pointer-events:none;
+  }
+  .hero-frame span{
+    position:absolute; font-family:'Inter'; font-size:11px; letter-spacing:2px; color:var(--muted);
+  }
+  .hero-frame .tl{top:-10px; left:12px; background:var(--ink); padding:0 6px;}
+  .hero-frame .tr{top:-10px; right:12px; background:var(--ink); padding:0 6px;}
+  .hero-frame .bl{bottom:-10px; left:12px; background:var(--ink); padding:0 6px;}
+  .hero-frame .br{bottom:-10px; right:12px; background:var(--ink); padding:0 6px;}
+
+  .hero-inner{max-width:1180px; margin:0 auto; padding:0 32px; width:100%;}
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Inter'; font-size:12px; letter-spacing:3px; color:var(--muted); margin-bottom:28px;
+    text-transform:uppercase;
+  }
+  .eyebrow .pulse{
+    width:8px; height:8px; border-radius:50%; background:var(--gold);
+    box-shadow:0 0 0 0 rgba(201,154,75,0.6); animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(201,154,75,0.55);}
+    70%{box-shadow:0 0 0 10px rgba(201,154,75,0);}
+    100%{box-shadow:0 0 0 0 rgba(201,154,75,0);}
+  }
+
+  h1.display{
+    font-family:'Montserrat', sans-serif; font-weight:900;
+    font-size:clamp(52px, 9vw, 118px); line-height:0.94; letter-spacing:-1px;
+    text-transform:uppercase;
+  }
+  h1.display .line2{ color:var(--gold);}
+
+  /* staggered hero entrance */
+  .hero-stagger{ opacity:0; transform:translateY(24px); transition:opacity .9s ease, transform .9s cubic-bezier(.16,1,.3,1);}
+  .js .hero.stagger-go .hero-stagger{ opacity:1; transform:translateY(0);}
+  .hero-stagger:nth-child(1){transition-delay:.15s;}
+  .hero-stagger:nth-child(2){transition-delay:.3s;}
+  .hero-stagger:nth-child(3){transition-delay:.45s;}
+  .hero-stagger:nth-child(4){transition-delay:.6s;}
+  .no-js .hero-stagger{opacity:1; transform:none;}
+
+  .hero-tag{
+    font-family:'Playfair Display', serif; font-style:italic;
+    font-size:clamp(18px, 2.2vw, 24px); color:var(--bone-dim);
+    margin-top:26px; max-width:520px;
+  }
+
+  .hero-meta{
+    display:flex; gap:48px; margin-top:64px; flex-wrap:wrap;
+  }
+  .hero-meta div{font-size:13px; color:var(--muted);}
+  .hero-meta strong{display:block; font-family:'Montserrat',sans-serif; color:var(--bone); font-size:15px; font-weight:700; margin-bottom:4px; letter-spacing:0.5px;}
+
+  /* ---------- section shared ---------- */
+  section{padding:120px 0;}
+  .section-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:56px; flex-wrap:wrap; gap:16px;}
+  .kicker{ font-size:12px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; font-family:'Inter'; font-weight:500;}
+  h2.section-title{
+    font-family:'Montserrat', sans-serif; font-weight:700; font-size:clamp(28px,4vw,44px);
+    text-transform:uppercase; letter-spacing:-0.5px; margin-top:10px;
+  }
+  .rule{height:0.5px; background:var(--slate); border:none; width:100%;}
+
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.4fr; gap:80px; align-items:start;}
+  .about-lead{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:26px; line-height:1.5; color:var(--bone);
+  }
+  .about-body p{ font-size:15px; line-height:1.85; color:var(--bone-dim); margin-bottom:18px;}
+  .about-body p:last-child{margin-bottom:0;}
+
+  /* ---------- work ---------- */
+  .work-list{ display:flex; flex-direction:column;}
+  .work-row{
+    display:grid; grid-template-columns:100px 1fr 1.4fr 90px; align-items:center; gap:24px;
+    padding:34px 8px; border-bottom:0.5px solid var(--slate); border-left:0px solid var(--gold);
+    transition:background .3s ease, border-left-width .3s ease, padding-left .3s ease;
+  }
+  .work-row:first-child{border-top:0.5px solid var(--slate);}
+  .work-row:hover{background:var(--ink-2); border-left-width:3px; padding-left:20px;}
+  .work-frame-no{ font-family:'Inter'; font-size:12px; color:var(--muted); letter-spacing:1px;}
+  .work-name{ font-family:'Montserrat', sans-serif; font-weight:700; font-size:21px; letter-spacing:0.3px; transition:color .3s ease;}
+  .work-row:hover .work-name{color:var(--gold);}
+  .work-desc{ font-size:14px; color:var(--muted); line-height:1.6;}
+  .work-tag{
+    font-size:11px; letter-spacing:1.5px; color:var(--gold); text-transform:uppercase; text-align:right;
+  }
+
+  /* ---------- services ---------- */
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--slate);}
+  .service-card{ background:var(--ink); padding:44px 34px; transition:transform .35s ease, background .35s ease;}
+  .service-card:hover{ background:var(--ink-2); transform:translateY(-6px);}
+  .service-card:hover .service-frame{ color:var(--bone);}
+  .service-frame{ font-family:'Inter'; font-size:12px; color:var(--gold); letter-spacing:2px; margin-bottom:22px; transition:color .3s ease;}
+  .service-title{ font-family:'Montserrat', sans-serif; font-weight:700; font-size:19px; margin-bottom:14px; text-transform:uppercase; letter-spacing:0.2px;}
+  .service-desc{ font-size:14px; color:var(--muted); line-height:1.7;}
+
+  /* ---------- contact / cta ---------- */
+  .cta-section{ text-align:center;}
+  .cta-title{
+    font-family:'Montserrat', sans-serif; font-weight:900; font-size:clamp(36px,6vw,68px);
+    text-transform:uppercase; line-height:1.02; letter-spacing:-1px;
+  }
+  .cta-title .gold{color:var(--gold);}
+  .cta-sub{
+    font-family:'Playfair Display', serif; font-style:italic; color:var(--bone-dim);
+    font-size:18px; margin:24px auto 44px; max-width:460px;
+  }
+  .cta-buttons{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+  .btn{
+    padding:16px 34px; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; font-weight:500;
+    transition:all .25s ease; display:inline-block;
+  }
+  .btn-primary{ background:var(--gold); color:var(--ink);}
+  .btn-primary:hover{ background:var(--bone);}
+  .btn-secondary{ border:0.5px solid var(--slate); color:var(--bone);}
+  .btn-secondary:hover{ border-color:var(--gold); color:var(--gold);}
+
+  /* ---------- footer ---------- */
+  footer{ border-top:0.5px solid var(--slate); padding:44px 0;}
+  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-mark{ font-family:'Montserrat', sans-serif; font-weight:700; letter-spacing:2px; font-size:13px;}
+  .footer-links{ display:flex; gap:28px; font-size:13px; color:var(--muted);}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-copy{ font-size:12px; color:var(--muted);}
+
+  /* ---------- reveal on scroll (progressive enhancement — only hides content once JS confirms it can reveal it) ---------- */
+  .js .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .js .reveal.is-visible{ opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .js .reveal{ opacity:1; transform:none; transition:none;}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+    .work-row{grid-template-columns:50px 1fr; row-gap:8px;}
+    .work-desc{grid-column:2/3;}
+    .work-tag{display:none;}
+    .services-grid{grid-template-columns:1fr;}
+    section{padding:80px 0;}
+    .hero-meta{gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="shutter" id="shutter">
+  <div class="shutter-leaf l"></div>
+  <div class="shutter-leaf r"></div>
+  <div class="shutter-center">YSG STUDIO</div>
+</div>
+
+<header>
+  <nav>
+    <div class="nav-mark"><span class="dot"></span>YSG STUDIO</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+    </div>
+    <a class="nav-cta" href="mailto:yahyaaa.g@ysgstudio.in">Book a shoot</a>
+  </nav>
+</header>
+
+<section class="hero" id="hero">
+  <div class="spotlight" id="spotlight"></div>
+  <div class="hero-frame">
+    <span class="tl">YSG / 01</span>
+    <span class="tr">MUMBAI, IN</span>
+    <span class="bl">EST. 2026</span>
+    <span class="br">F/2.8</span>
+  </div>
+  <div class="hero-inner">
+    <div class="eyebrow hero-stagger"><span class="pulse"></span>Photography &amp; visual production</div>
+    <h1 class="display hero-stagger">Every frame<br><span class="line2">has a pulse.</span></h1>
+    <p class="hero-tag hero-stagger">YSG Studio shoots portraits, campaigns, and artist documentation for people who don't settle for average.</p>
+    <div class="hero-meta hero-stagger">
+      <div><strong>2</strong>Active clients</div>
+      <div><strong>Mumbai</strong>Based, pan-India ready</div>
+      <div><strong>@yahyaaa.g</strong>Instagram</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">About</div>
+        <h2 class="section-title">The studio</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <p class="about-lead reveal">We shoot for people whose work already has energy — our job is to make sure the frame keeps up.</p>
+      <div class="about-body reveal">
+        <p>YSG Studio is a photography and visual production house founded by <strong style="color:var(--bone);">Yahya Gopalani</strong>, built around a single idea: every frame should carry energy, not just information. We work across portraiture, campaign visuals, and artist documentation.</p>
+        <p>We shoot for musicians, comedians, and brands who want their imagery to feel as alive as the work it represents — and we're building a trusted network of creators across India's major cities to take that standard beyond Mumbai.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Selected work</div>
+        <h2 class="section-title">Frames on file</h2>
+      </div>
+    </div>
+    <div class="work-list reveal">
+      <div class="work-row">
+        <div class="work-frame-no">FRAME 01</div>
+        <div class="work-name">Munawar Faruqui</div>
+        <div class="work-desc">Artist visuals and documentation for one of India's leading stand-up comedians.</div>
+        <div class="work-tag">Active</div>
+      </div>
+      <div class="work-row">
+        <div class="work-frame-no">FRAME 02</div>
+        <div class="work-name">Evorea</div>
+        <div class="work-desc">Brand and campaign photography for the Evorea label.</div>
+        <div class="work-tag">Active</div>
+      </div>
+      <div class="work-row">
+        <div class="work-frame-no">FRAME 03</div>
+        <div class="work-name">Alienkind</div>
+        <div class="work-desc">Visual direction and shoot production for the Alienkind project.</div>
+        <div class="work-tag" style="color:var(--muted);">Past work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Services</div>
+        <h2 class="section-title">What we shoot</h2>
+      </div>
+    </div>
+    <div class="services-grid reveal bracketed">
+      <span class="bl"></span><span class="br"></span>
+      <div class="service-card">
+        <div class="service-frame">FRAME A</div>
+        <div class="service-title">Portrait &amp; artist shoots</div>
+        <div class="service-desc">Editorial and personal branding sessions built around who you are, not a template.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-frame">FRAME B</div>
+        <div class="service-title">Campaign &amp; brand visuals</div>
+        <div class="service-desc">Product and brand-led photography for launches, drops, and ongoing content.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-frame">FRAME C</div>
+        <div class="service-title">Event documentation</div>
+        <div class="service-desc">Coverage for launches, shows, and sets — delivered fast, cut for how you'll use it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="wrap reveal">
+    <h2 class="cta-title">Let's shoot<br>something <span class="gold">worth</span> keeping.</h2>
+    <p class="cta-sub">Reach out with your dates, the vibe, and what you're building — we'll take it from there.</p>
+    <div class="cta-buttons">
+      <a class="btn btn-primary" href="mailto:yahyaaa.g@ysgstudio.in">yahyaaa.g@ysgstudio.in</a>
+      <a class="btn btn-secondary" href="https://instagram.com/yahyaaa.g" target="_blank" rel="noopener">@yahyaaa.g</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-mark">YSG STUDIO</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+    </div>
+    <div class="footer-copy">Yahya Gopalani · Mumbai, India · ysgstudio.in</div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.remove('no-js');
+  document.documentElement.classList.add('js');
+  // scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); } });
+  }, {threshold:0.15});
+  reveals.forEach(el=>io.observe(el));
+
+  // bracket motif on services block
+  const bracketed = document.querySelectorAll('.bracketed');
+  const bio = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); } });
+  }, {threshold:0.2});
+  bracketed.forEach(el=>bio.observe(el));
+
+  // shutter intro + hero stagger
+  const shutter = document.getElementById('shutter');
+  const hero = document.getElementById('hero');
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{
+      shutter.classList.add('is-open');
+      hero.classList.add('stagger-go');
+      setTimeout(()=>{ shutter.style.display = 'none'; }, 1200);
+    }, 250);
+  });
+
+  // cursor spotlight in hero (desktop only, respects reduced motion)
+  const spotlight = document.getElementById('spotlight');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReducedMotion && window.matchMedia('(hover: hover)').matches){
+    hero.addEventListener('mousemove', (e)=>{
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      spotlight.style.setProperty('--sx', x + '%');
+      spotlight.style.setProperty('--sy', y + '%');
+      spotlight.classList.add('is-active');
+    });
+    hero.addEventListener('mouseleave', ()=> spotlight.classList.remove('is-active'));
+  }
+</script>
+
+</body>
+</html>
