@@ -228,27 +228,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 }
 .preview-cta{ margin-top:28px; text-align:right; }
 
-/* ===========================================================================
-   HOME — Unsplash feature
-   ======================================================================== */
-.unsplash-feature{ overflow:hidden; }
-.unsplash-grid{
-  display:grid; grid-template-columns:1.1fr .9fr .9fr; gap:2px;
-  max-width:var(--max-w); margin:0 auto; padding:0 var(--space-gutter);
-}
-.unsplash-frame{ margin:0; background:var(--black-2); overflow:hidden; min-height:320px; }
-.unsplash-frame img{ width:100%; height:100%; object-fit:cover; filter:saturate(.84) contrast(1.04); transition:transform .8s cubic-bezier(.16,1,.3,1), filter .5s ease; }
-.unsplash-frame:hover img{ transform:scale(1.04); filter:saturate(1) contrast(1); }
-.unsplash-frame--tall{ grid-row:span 2; min-height:640px; }
-.unsplash-credit{ display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:24px; color:var(--grey); font-size:.9rem; }
-.unsplash-credit p{ margin:0; }
-@media (max-width:760px){
-  .unsplash-grid{ grid-template-columns:1fr 1fr; }
-  .unsplash-frame--tall{ grid-row:span 2; min-height:500px; }
-  .unsplash-frame:last-child{ display:none; }
-  .unsplash-credit{ align-items:flex-start; flex-direction:column; gap:12px; }
-}
-
 /* ==========================================================================
    HOME — discipline list
    ========================================================================== */
